@@ -1,0 +1,35 @@
+# Standard experiment configuration template.
+# Copy into a paper/experiment folder and fill in before running.
+
+experiment_name: ""
+git_commit: ""          # commit hash at time of run
+seed: 42
+
+model:
+  architecture: ""
+  n_params: ""
+  config_path: ""
+
+dataset:
+  name: ""
+  version: ""
+  n_tokens: ""
+
+training:
+  batch_size: ""
+  gradient_accumulation_steps: ""
+  learning_rate: ""
+  optimizer: ""
+  precision: ""          # e.g. fp32, fp16, bf16
+  training_steps: ""
+
+hardware:
+  device: ""             # e.g. "1x RTX 4090"
+  training_time: ""
+
+results:
+  training_loss: ""
+  validation_loss: ""
+  perplexity: ""
+  tokens_per_sec: ""
+  gpu_memory_gb: ""

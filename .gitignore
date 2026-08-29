@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data & model artifacts
+data/
+datasets/
+checkpoints/
+*.ckpt
+*.pt
+*.bin
+*.safetensors
+wandb/
+mlruns/
+outputs/
+logs/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# scaffold helper
+_scaffold.py
