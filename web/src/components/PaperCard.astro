@@ -1,5 +1,6 @@
 ---
 import StatusBadge from "./StatusBadge.astro";
+import { withBase } from "../utils/url";
 
 interface Paper {
   n: number;
@@ -24,7 +25,7 @@ const levelIcon: Record<string, string> = {
   STUDY: "🔵",
 };
 ---
-<a class="paper-card card" href={`/papers/${paper.slug}/`}>
+<a class="paper-card card" href={withBase(`/papers/${paper.slug}/`)}>
   <div class="paper-card__top">
     <span class="paper-card__n">#{String(paper.n).padStart(2, "0")}</span>
     <span class="tag">{levelIcon[paper.level]} {paper.level}</span>

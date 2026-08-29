@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProgressDashboard from "../components/ProgressDashboard.astro";
 import PaperCard from "../components/PaperCard.astro";
+import { withBase } from "../utils/url";
 import links from "../data/links.json";
 import roadmap from "../data/roadmap.json";
 import papers from "../data/papers.json";
@@ -32,10 +33,10 @@ const firstPaper = papers.find((p) => p.n === 1);
 
   <section class="section wrap">
     <h2>Roadmap</h2>
-    <p class="muted">6 phases, no fixed deadline. Full detail on the <a href="/roadmap/">roadmap page</a>.</p>
+    <p class="muted">6 phases, no fixed deadline. Full detail on the <a href={withBase("/roadmap/")}>roadmap page</a>.</p>
     <div class="grid phases">
       {roadmap.map((phase) => (
-        <a class="card phase" href="/roadmap/">
+        <a class="card phase" href={withBase("/roadmap/")}>
           <span class="tag">phase {phase.phase}</span>
           <h3>{phase.title}</h3>
           <p class="muted">{phase.papers.length} paper{phase.papers.length > 1 ? "s" : ""}</p>
@@ -66,7 +67,7 @@ const firstPaper = papers.find((p) => p.n === 1);
         <tr><td><strong>Original Research</strong></td><td>Investigating a question beyond simply following a paper.</td></tr>
       </tbody>
     </table>
-    <p class="muted">More in the <a href="/about/">about page</a>.</p>
+    <p class="muted">More in the <a href={withBase("/about/")}>about page</a>.</p>
   </section>
 </BaseLayout>
 

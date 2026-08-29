@@ -1,5 +1,6 @@
 ---
 import links from "../data/links.json";
+import { withBase } from "../utils/url";
 
 const nav = [
   { href: "/", label: "home" },
@@ -14,16 +15,16 @@ const nav = [
 
 const path = Astro.url.pathname;
 function isActive(href: string) {
-  if (href === "/") return path === Astro.site?.pathname || path === "/" || path.endsWith("/jagan-llm-labs/");
+  if (href === "/") return path === withBase("/") || path === "/";
   return path.includes(href);
 }
 ---
 <header class="nav">
   <div class="wrap nav__inner">
-    <a class="nav__brand" href="/">jagan-llm-lab<span class="nav__cursor">_</span></a>
+    <a class="nav__brand" href={withBase("/")}>jagan-llm-lab<span class="nav__cursor">_</span></a>
     <nav class="nav__links">
       {nav.map((item) => (
-        <a href={item.href} class={isActive(item.href) ? "is-active" : ""}>{item.label}</a>
+        <a href={withBase(item.href)} class={isActive(item.href) ? "is-active" : ""}>{item.label}</a>
       ))}
     </nav>
     <a class="nav__x" href={links.x} target="_blank" rel="noopener noreferrer">X →</a>

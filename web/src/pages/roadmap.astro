@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../utils/url";
 import roadmap from "../data/roadmap.json";
 import papers from "../data/papers.json";
 
@@ -29,7 +30,7 @@ const paperById = new Map(papers.map((p) => [p.n, p]));
           const p = paperById.get(n);
           return p ? (
             <li>
-              <a href={`/papers/${p.slug}/`}>#{n} — {p.title}</a>
+              <a href={withBase(`/papers/${p.slug}/`)}>#{n} — {p.title}</a>
             </li>
           ) : null;
         })}

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../utils/url";
 import experiments from "../../data/experiments.json";
 import links from "../../data/links.json";
 
@@ -15,7 +16,7 @@ const githubPath = `${links.github}/tree/master/experiments/${exp.slug}`;
 ---
 <BaseLayout title={exp.title}>
   <section class="section wrap">
-    <p class="muted"><a href="/experiments/">← all experiments</a></p>
+    <p class="muted"><a href={withBase("/experiments/")}>← all experiments</a></p>
     <span class="tag">{exp.status}</span>
     <h1>{exp.title}</h1>
     <p class="muted">{exp.related}</p>

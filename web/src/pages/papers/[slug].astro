@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import StatusBadge from "../../components/StatusBadge.astro";
+import { withBase } from "../../utils/url";
 import papers from "../../data/papers.json";
 import links from "../../data/links.json";
 
@@ -23,7 +24,7 @@ const githubPath = `${links.github}/tree/master/papers/${paper.slug}`;
 ---
 <BaseLayout title={paper.title}>
   <section class="section wrap">
-    <p class="muted"><a href="/papers/">← all papers</a></p>
+    <p class="muted"><a href={withBase("/papers/")}>← all papers</a></p>
     <p class="tag">#{String(paper.n).padStart(2, "0")} · {levelIcon[paper.level]} {paper.level} · {paper.difficulty}</p>
     <h1>{paper.title}</h1>
     <p class="muted">{paper.authors} · {paper.year} · {paper.category}</p>
