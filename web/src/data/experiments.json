@@ -1,0 +1,68 @@
+[
+    {
+        "slug": "001-transformer-from-scratch",
+        "title": "Transformer From Scratch",
+        "related": "Paper #1 — Attention Is All You Need",
+        "status": "not-started"
+    },
+    {
+        "slug": "002-mini-gpt",
+        "title": "Mini-GPT",
+        "related": "Paper #4 — GPT-3 (small-scale conceptual reproduction)",
+        "status": "not-started"
+    },
+    {
+        "slug": "003-scaling-laws",
+        "title": "Scaling Laws Lab",
+        "related": "Paper #5/#6 — Scaling Laws / Chinchilla",
+        "status": "not-started"
+    },
+    {
+        "slug": "004-flash-attention",
+        "title": "FlashAttention Benchmark",
+        "related": "Paper #9 — FlashAttention",
+        "status": "not-started"
+    },
+    {
+        "slug": "005-sft",
+        "title": "Supervised Fine-Tuning Pipeline",
+        "related": "Paper #11 — InstructGPT",
+        "status": "not-started"
+    },
+    {
+        "slug": "006-lora",
+        "title": "LoRA Fine-Tuning",
+        "related": "Supporting technique for Phase 3",
+        "status": "not-started"
+    },
+    {
+        "slug": "007-dpo",
+        "title": "DPO Experiment",
+        "related": "Paper #12 — Direct Preference Optimization",
+        "status": "not-started"
+    },
+    {
+        "slug": "008-reasoning",
+        "title": "Reasoning Benchmark",
+        "related": "Paper #13/#15 — Chain-of-Thought / DeepSeek-R1",
+        "status": "not-started"
+    },
+    {
+        "slug": "009-moe",
+        "title": "MoE Transformer",
+        "related": "Paper #17/#18 — Sparsely-Gated MoE / Switch Transformer",
+        "status": "not-started"
+    },
+    {
+        "slug": "010-sparse-upcycling",
+        "title": "Dense → MoE Sparse Upcycling",
+        "related": "Paper #20 — Sparse Upcycling",
+        "status": "not-started"
+    },
+    {
+        "slug": "011-original-research",
+        "title": "Original Research",
+        "related": "Phase 6 — original investigation, not tied to a single paper",
+        "status": "not-started"
+    }
+]

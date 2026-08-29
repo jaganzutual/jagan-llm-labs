@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProgressDashboard from "../components/ProgressDashboard.astro";
+import links from "../data/links.json";
+---
+<BaseLayout title="Progress">
+  <section class="section wrap">
+    <h1>Progress</h1>
+    <p class="muted">
+      Weekly and monthly logs, kept honest — sections start empty and are
+      filled in manually as weeks/months actually happen. No fabricated
+      collaborations, people, or milestones.
+    </p>
+    <ProgressDashboard />
+  </section>
+
+  <section class="section wrap">
+    <h2>Weekly &amp; monthly reports</h2>
+    <p class="muted">
+      Full logs live in the repo's <code>progress/</code> folder
+      (<a href={`${links.github}/tree/master/progress`} target="_blank" rel="noopener noreferrer">browse on GitHub →</a>).
+      This page will list entries as they're filled in.
+    </p>
+    <p class="muted">No entries yet.</p>
+  </section>
+</BaseLayout>

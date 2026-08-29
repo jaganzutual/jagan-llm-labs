@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PaperCard from "../../components/PaperCard.astro";
+import papers from "../../data/papers.json";
+---
+<BaseLayout title="Papers">
+  <section class="section wrap">
+    <h1>Papers</h1>
+    <p class="muted">
+      {papers.length} papers tracked. 🟢 IMPLEMENT — built from scratch ·
+      🟡 EXPERIMENT — reproduced at small scale · 🔵 STUDY — understood without full reproduction.
+    </p>
+  </section>
+
+  <section class="section wrap">
+    <div class="grid papers-grid">
+      {papers.map((paper) => <PaperCard paper={paper} />)}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .papers-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+</style>

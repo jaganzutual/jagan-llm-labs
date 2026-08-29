@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import roadmap from "../data/roadmap.json";
+import papers from "../data/papers.json";
+
+const paperById = new Map(papers.map((p) => [p.n, p]));
+---
+<BaseLayout title="Roadmap">
+  <section class="section wrap">
+    <h1>Roadmap</h1>
+    <p class="muted">
+      6 phases, no fixed deadline. Each phase pairs a set of papers with concrete
+      implementation and experiment goals — adjusted as the lab learns, structure
+      and honesty requirements stay the same.
+    </p>
+  </section>
+
+  {roadmap.map((phase) => (
+    <section class="section wrap">
+      <div class="phase-head">
+        <span class="tag">phase {phase.phase}</span>
+        <span class="tag">{phase.status}</span>
+      </div>
+      <h2>{phase.title}</h2>
+
+      <h3>Papers</h3>
+      <ul class="plain">
+        {phase.papers.map((n) => {
+          const p = paperById.get(n);
+          return p ? (
+            <li>
+              <a href={`/papers/${p.slug}/`}>#{n} — {p.title}</a>
+            </li>
+          ) : null;
+        })}
+      </ul>
+
+      <h3>Goals</h3>
+      <ul>
+        {phase.goals.map((g) => <li>{g}</li>)}
+      </ul>
+
+      <h3>Build</h3>
+      <ul>
+        {phase.build.map((b) => <li>{b}</li>)}
+      </ul>
+    </section>
+  ))}
+</BaseLayout>
+
+<style>
+  .phase-head {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  ul.plain {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+</style>

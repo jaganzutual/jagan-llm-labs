@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import experiments from "../../data/experiments.json";
+import links from "../../data/links.json";
+
+export function getStaticPaths() {
+  return experiments.map((exp) => ({
+    params: { slug: exp.slug },
+    props: { exp },
+  }));
+}
+
+const { exp } = Astro.props;
+const githubPath = `${links.github}/tree/master/experiments/${exp.slug}`;
+---
+<BaseLayout title={exp.title}>
+  <section class="section wrap">
+    <p class="muted"><a href="/experiments/">← all experiments</a></p>
+    <span class="tag">{exp.status}</span>
+    <h1>{exp.title}</h1>
+    <p class="muted">{exp.related}</p>
+
+    <table>
+      <tbody>
+        <tr><td>Full writeup</td><td><a href={githubPath} target="_blank" rel="noopener noreferrer">View on GitHub →</a></td></tr>
+      </tbody>
+    </table>
+
+    <p class="muted">
+      Follows the standard experiment template: research question → hypothesis →
+      controlled variables → setup → results → analysis → failure modes → next
+      experiment. Filled in as this experiment runs.
+    </p>
+  </section>
+</BaseLayout>

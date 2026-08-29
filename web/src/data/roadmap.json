@@ -1,0 +1,146 @@
+[
+    {
+        "phase": 1,
+        "title": "Transformer Foundations",
+        "status": "not-started",
+        "papers": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "goals": [
+            "Understand tokenization",
+            "Understand embeddings",
+            "Understand self-attention",
+            "Implement multi-head attention",
+            "Implement Transformer blocks",
+            "Understand encoder vs. decoder",
+            "Build a decoder-only Transformer"
+        ],
+        "build": [
+            "Mini Transformer",
+            "Mini GPT"
+        ]
+    },
+    {
+        "phase": 2,
+        "title": "Modern LLM Architectures",
+        "status": "not-started",
+        "papers": [
+            5,
+            6,
+            7,
+            8,
+            9
+        ],
+        "goals": [
+            "Understand scaling",
+            "Understand compute-optimal training",
+            "Understand RoPE",
+            "Understand RMSNorm",
+            "Understand SwiGLU",
+            "Understand efficient attention",
+            "Understand GPU memory movement"
+        ],
+        "build": [
+            "Mini-GPT v2",
+            "Scaling Lab",
+            "FlashAttention benchmark"
+        ]
+    },
+    {
+        "phase": 3,
+        "title": "Knowledge + Post-Training",
+        "status": "not-started",
+        "papers": [
+            10,
+            11,
+            12
+        ],
+        "goals": [
+            "Understand retrieval augmentation",
+            "Understand supervised fine-tuning",
+            "Understand preference optimization",
+            "Understand LoRA/QLoRA as supporting techniques"
+        ],
+        "build": [
+            "RAG system",
+            "SFT pipeline",
+            "LoRA fine-tuning",
+            "DPO experiment"
+        ]
+    },
+    {
+        "phase": 4,
+        "title": "Reasoning + Agents",
+        "status": "not-started",
+        "papers": [
+            13,
+            14,
+            15,
+            16
+        ],
+        "goals": [
+            "Understand reasoning prompting",
+            "Understand tool use",
+            "Understand RL for reasoning",
+            "Understand test-time compute",
+            "Understand modern reasoning models"
+        ],
+        "build": [
+            "Reasoning benchmark",
+            "Tiny tool-using agent",
+            "Small reasoning experiment"
+        ]
+    },
+    {
+        "phase": 5,
+        "title": "Mixture of Experts",
+        "status": "not-started",
+        "papers": [
+            17,
+            18,
+            19,
+            20
+        ],
+        "goals": [
+            "Understand conditional computation",
+            "Routing",
+            "Expert capacity",
+            "Load balancing",
+            "Sparse activation",
+            "Dense → MoE conversion"
+        ],
+        "build": [
+            "MoE Transformer",
+            "Router",
+            "Expert system",
+            "Dense → MoE sparse upcycling experiment"
+        ]
+    },
+    {
+        "phase": 6,
+        "title": "Deeper Research + Original Work",
+        "status": "not-started",
+        "papers": [
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+        ],
+        "goals": [
+            "Understand representation learning",
+            "Understand synthetic data",
+            "Understand interpretability",
+            "Understand large-scale training",
+            "Understand MoE scaling",
+            "Understand practical training workflows"
+        ],
+        "build": [
+            "Original LLM research project"
+        ]
+    }
+]

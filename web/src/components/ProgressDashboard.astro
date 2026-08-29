@@ -1,0 +1,66 @@
+---
+import progress from "../data/progress.json";
+
+const metrics = [
+  { label: "papers read", value: progress.papersRead, total: progress.papersTotal },
+  { label: "implementations", value: progress.implementations, total: progress.implementationsTotal },
+  { label: "experiments", value: progress.experiments, total: progress.experimentsTotal },
+  { label: "research projects", value: progress.researchProjects, total: progress.researchTotal },
+];
+---
+<div class="dashboard">
+  {metrics.map((m) => (
+    <div class="metric card">
+      <span class="metric__value">{m.value}<span class="muted"> / {m.total}</span></span>
+      <span class="metric__label">{m.label}</span>
+      <div class="metric__bar">
+        <div class="metric__fill" style={`width: ${m.total ? (m.value / m.total) * 100 : 0}%`}></div>
+      </div>
+    </div>
+  ))}
+  <div class="metric card">
+    <span class="metric__value">{progress.weeksActive}</span>
+    <span class="metric__label">weeks active</span>
+    <p class="metric__note muted">no fixed end date — grows as the lab does</p>
+  </div>
+</div>
+
+<style>
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .metric__value {
+    font-family: var(--mono);
+    font-size: 1.6rem;
+    color: var(--text-bright);
+  }
+  .metric__label {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .metric__bar {
+    margin-top: 0.4rem;
+    height: 4px;
+    background: var(--bg-inset);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .metric__fill {
+    height: 100%;
+    background: var(--accent-dim);
+  }
+  .metric__note {
+    font-size: 0.75rem;
+    margin: 0.2rem 0 0;
+  }
+</style>

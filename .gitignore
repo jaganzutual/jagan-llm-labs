@@ -10,8 +10,8 @@ venv/
 # Jupyter
 .ipynb_checkpoints/
 
-# Data & model artifacts
-data/
+# Data & model artifacts (paper/experiment working dirs, not site/src/data)
+/data/
 datasets/
 checkpoints/
 *.ckpt
@@ -22,6 +22,11 @@ wandb/
 mlruns/
 outputs/
 logs/
+
+# Node / Astro site
+web/node_modules/
+web/dist/
+web/.astro/
 
 # OS / editor
 .DS_Store

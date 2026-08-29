@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import links from "../data/links.json";
+---
+<BaseLayout title="About">
+  <section class="section wrap">
+    <h1>About</h1>
+    <p>
+      I'm a software engineer learning how modern large language models are
+      built — from Transformer fundamentals to reasoning, Mixture-of-Experts,
+      inference, and eventually original research. This site (and its
+      <a href={links.github} target="_blank" rel="noopener noreferrer">source repo</a>)
+      is a public, working lab notebook for that journey.
+    </p>
+    <p>
+      I am <strong>not</strong> claiming to be an AI expert. I am documenting
+      the process of becoming one — in the open, with real code, real
+      failures, and real results.
+    </p>
+  </section>
+
+  <section class="section wrap">
+    <h2>Labels, used precisely</h2>
+    <table>
+      <tbody>
+        <tr><td><strong>Learning</strong></td><td>Understanding an existing, published concept.</td></tr>
+        <tr><td><strong>Implementation</strong></td><td>Building an existing, published idea from scratch.</td></tr>
+        <tr><td><strong>Reproduction</strong></td><td>Attempting to reproduce published findings (usually small-scale).</td></tr>
+        <tr><td><strong>Experiment</strong></td><td>Modifying or testing an idea under controlled conditions.</td></tr>
+        <tr><td><strong>Original Research</strong></td><td>Investigating a question beyond simply following a paper.</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">
+      A small-scale experiment on a consumer GPU is never described as
+      reproducing a frontier model — results like that are labeled
+      "conceptual small-scale reproduction."
+    </p>
+  </section>
+
+  <section class="section wrap">
+    <h2>Learning philosophy</h2>
+    <p class="prompt">learn → implement → experiment → analyze → document → share → repeat</p>
+  </section>
+
+  <section class="section wrap">
+    <h2>Community</h2>
+    <p class="muted">
+      Reproductions, corrections, and discussion are welcome. See
+      <a href={`${links.github}/blob/master/CONTRIBUTING.md`} target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a>
+      and
+      <a href={`${links.github}/blob/master/COMMUNITY.md`} target="_blank" rel="noopener noreferrer">COMMUNITY.md</a>
+      on GitHub.
+    </p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,444 @@
+[
+    {
+        "n": 1,
+        "slug": "01-attention-is-all-you-need",
+        "title": "Attention Is All You Need",
+        "authors": "Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, Polosukhin",
+        "year": 2017,
+        "category": "Foundations",
+        "level": "IMPLEMENT",
+        "difficulty": "Intermediate",
+        "link": "https://arxiv.org/abs/1706.03762",
+        "official": "tensor2tensor (archived): https://github.com/tensorflow/tensor2tensor",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 2,
+        "slug": "02-illustrated-transformer",
+        "title": "The Illustrated Transformer",
+        "authors": "Jay Alammar",
+        "year": 2018,
+        "category": "Foundations",
+        "level": "STUDY",
+        "difficulty": "Beginner",
+        "link": "https://jalammar.github.io/illustrated-transformer/",
+        "official": "N/A (blog post / visual explainer)",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 3,
+        "slug": "03-bert",
+        "title": "BERT: Pre-training of Deep Bidirectional Transformers",
+        "authors": "Devlin, Chang, Lee, Toutanova",
+        "year": 2018,
+        "category": "Foundations",
+        "level": "EXPERIMENT",
+        "difficulty": "Intermediate",
+        "link": "https://arxiv.org/abs/1810.04805",
+        "official": "https://github.com/google-research/bert",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 4,
+        "slug": "04-gpt3",
+        "title": "Language Models are Few-Shot Learners (GPT-3)",
+        "authors": "Brown, Mann, Ryder, Subbiah, Kaplan, et al.",
+        "year": 2020,
+        "category": "Foundations",
+        "level": "STUDY",
+        "difficulty": "Intermediate",
+        "link": "https://arxiv.org/abs/2005.14165",
+        "official": "TBD — verify before filling in",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 5,
+        "slug": "05-scaling-laws",
+        "title": "Scaling Laws for Neural Language Models",
+        "authors": "Kaplan, McCandlish, Henighan, Brown, et al.",
+        "year": 2020,
+        "category": "Scaling",
+        "level": "STUDY",
+        "difficulty": "Intermediate",
+        "link": "https://arxiv.org/abs/2001.08361",
+        "official": "N/A (analysis paper)",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 6,
+        "slug": "06-chinchilla",
+        "title": "Training Compute-Optimal Large Language Models",
+        "authors": "Hoffmann, Borgeaud, Mensch, Buchatskaya, et al.",
+        "year": 2022,
+        "category": "Scaling",
+        "level": "STUDY",
+        "difficulty": "Intermediate",
+        "link": "https://arxiv.org/abs/2203.15556",
+        "official": "N/A (analysis paper)",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 7,
+        "slug": "07-llama",
+        "title": "LLaMA: Open and Efficient Foundation Language Models",
+        "authors": "Touvron, Lavril, Izacard, Martinet, et al.",
+        "year": 2023,
+        "category": "Architecture",
+        "level": "IMPLEMENT",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2302.13971",
+        "official": "https://github.com/meta-llama/llama",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 8,
+        "slug": "08-roformer",
+        "title": "RoFormer: Enhanced Transformer with Rotary Position Embedding",
+        "authors": "Su, Lu, Pan, Murtadha, Wen, Liu",
+        "year": 2021,
+        "category": "Architecture",
+        "level": "IMPLEMENT",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2104.09864",
+        "official": "TBD — verify before filling in",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 9,
+        "slug": "09-flash-attention",
+        "title": "FlashAttention: Fast and Memory-Efficient Exact Attention",
+        "authors": "Dao, Fu, Ermon, Rudra, Re",
+        "year": 2022,
+        "category": "Systems",
+        "level": "EXPERIMENT",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2205.14135",
+        "official": "https://github.com/Dao-AILab/flash-attention",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 10,
+        "slug": "10-rag",
+        "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+        "authors": "Lewis, Perez, Piktus, Petroni, et al.",
+        "year": 2020,
+        "category": "Knowledge",
+        "level": "EXPERIMENT",
+        "difficulty": "Intermediate",
+        "link": "https://arxiv.org/abs/2005.11401",
+        "official": "TBD — verify before filling in",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 11,
+        "slug": "11-instructgpt",
+        "title": "Training language models to follow instructions with human feedback (InstructGPT)",
+        "authors": "Ouyang, Wu, Jiang, Almeida, et al.",
+        "year": 2022,
+        "category": "Post-training",
+        "level": "EXPERIMENT",
+        "difficulty": "Intermediate",
+        "link": "https://arxiv.org/abs/2203.02155",
+        "official": "TBD — verify before filling in",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 12,
+        "slug": "12-dpo",
+        "title": "Direct Preference Optimization",
+        "authors": "Rafailov, Sharma, Mitchell, Ermon, Manning, Finn",
+        "year": 2023,
+        "category": "Post-training",
+        "level": "EXPERIMENT",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2305.18290",
+        "official": "https://github.com/eric-mitchell/direct-preference-optimization",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 13,
+        "slug": "13-chain-of-thought",
+        "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+        "authors": "Wei, Wang, Schuurmans, Bosma, et al.",
+        "year": 2022,
+        "category": "Reasoning",
+        "level": "STUDY",
+        "difficulty": "Beginner",
+        "link": "https://arxiv.org/abs/2201.11903",
+        "official": "N/A (prompting technique)",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 14,
+        "slug": "14-react",
+        "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+        "authors": "Yao, Zhao, Yu, Du, Shafran, Narasimhan, Cao",
+        "year": 2022,
+        "category": "Reasoning / Agents",
+        "level": "EXPERIMENT",
+        "difficulty": "Intermediate",
+        "link": "https://arxiv.org/abs/2210.03629",
+        "official": "https://github.com/ysymyth/ReAct",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 15,
+        "slug": "15-deepseek-r1",
+        "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via RL",
+        "authors": "DeepSeek-AI",
+        "year": 2025,
+        "category": "Reasoning",
+        "level": "STUDY",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2501.12948",
+        "official": "https://github.com/deepseek-ai/DeepSeek-R1",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 16,
+        "slug": "16-qwen3",
+        "title": "Qwen3 Technical Report",
+        "authors": "Qwen Team, Alibaba",
+        "year": 2025,
+        "category": "Architecture",
+        "level": "STUDY",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2505.09388",
+        "official": "https://github.com/QwenLM/Qwen3",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 17,
+        "slug": "17-sparsely-gated-moe",
+        "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+        "authors": "Shazeer, Mirhoseini, Maziarz, Davis, Le, Hinton, Dean",
+        "year": 2017,
+        "category": "MoE",
+        "level": "IMPLEMENT",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/1701.06538",
+        "official": "TBD — verify before filling in",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 18,
+        "slug": "18-switch-transformer",
+        "title": "Switch Transformers: Scaling to Trillion Parameter Models",
+        "authors": "Fedus, Zoph, Shazeer",
+        "year": 2021,
+        "category": "MoE",
+        "level": "EXPERIMENT",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2101.03961",
+        "official": "TBD — verify before filling in",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 19,
+        "slug": "19-mixtral",
+        "title": "Mixtral of Experts",
+        "authors": "Jiang, Sablayrolles, Roux, Mensch, et al. (Mistral AI)",
+        "year": 2024,
+        "category": "MoE",
+        "level": "STUDY",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2401.04088",
+        "official": "https://github.com/mistralai/mistral-src",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 20,
+        "slug": "20-sparse-upcycling",
+        "title": "Sparse Upcycling: Training Mixture-of-Experts from Dense Checkpoints",
+        "authors": "Komatsuzaki, Puigcerver, Lee-Thorp, Ruiz, et al.",
+        "year": 2022,
+        "category": "MoE",
+        "level": "EXPERIMENT",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2212.05055",
+        "official": "TBD — verify before filling in",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 21,
+        "slug": "21-platonic-representation",
+        "title": "The Platonic Representation Hypothesis",
+        "authors": "Huh, Cheung, Wang, Isola",
+        "year": 2024,
+        "category": "Representation Learning",
+        "level": "STUDY",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2405.07987",
+        "official": "TBD — verify before filling in",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 22,
+        "slug": "22-textbooks-are-all-you-need",
+        "title": "Textbooks Are All You Need",
+        "authors": "Gunasekar, Zhang, Aneja, Mendes, et al. (Microsoft)",
+        "year": 2023,
+        "category": "Data",
+        "level": "STUDY",
+        "difficulty": "Intermediate",
+        "link": "https://arxiv.org/abs/2306.11644",
+        "official": "N/A (dataset/methodology paper)",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 23,
+        "slug": "23-scaling-monosemanticity",
+        "title": "Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet",
+        "authors": "Templeton, et al. (Anthropic)",
+        "year": 2024,
+        "category": "Interpretability",
+        "level": "STUDY",
+        "difficulty": "Advanced",
+        "link": "https://transformer-circuits.pub/2024/scaling-monosemanticity/",
+        "official": "N/A (research publication)",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 24,
+        "slug": "24-palm",
+        "title": "PaLM: Scaling Language Modeling with Pathways",
+        "authors": "Chowdhery, Narang, Devlin, Bosma, et al. (Google)",
+        "year": 2022,
+        "category": "Scaling",
+        "level": "STUDY",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2204.02311",
+        "official": "N/A (infra not open-sourced)",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 25,
+        "slug": "25-glam",
+        "title": "GLaM: Efficient Scaling of Language Models with Mixture-of-Experts",
+        "authors": "Du, Huang, Dai, Tong, et al. (Google)",
+        "year": 2021,
+        "category": "MoE",
+        "level": "STUDY",
+        "difficulty": "Advanced",
+        "link": "https://arxiv.org/abs/2112.06919",
+        "official": "N/A (infra not open-sourced)",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    },
+    {
+        "n": 26,
+        "slug": "26-smol-training-playbook",
+        "title": "The Smol Training Playbook",
+        "authors": "Hugging Face (HuggingFaceTB)",
+        "year": 2025,
+        "category": "Practical Training",
+        "level": "STUDY",
+        "difficulty": "Intermediate",
+        "link": "https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook",
+        "official": "https://huggingface.co/HuggingFaceTB",
+        "status": {
+            "read": false,
+            "implemented": false,
+            "experiment": false
+        }
+    }
+]

@@ -1,0 +1,77 @@
+---
+import StatusBadge from "./StatusBadge.astro";
+
+interface Paper {
+  n: number;
+  slug: string;
+  title: string;
+  year: number;
+  category: string;
+  level: "IMPLEMENT" | "EXPERIMENT" | "STUDY";
+  difficulty: string;
+  status: { read: boolean; implemented: boolean; experiment: boolean };
+}
+
+interface Props {
+  paper: Paper;
+}
+
+const { paper } = Astro.props;
+
+const levelIcon: Record<string, string> = {
+  IMPLEMENT: "🟢",
+  EXPERIMENT: "🟡",
+  STUDY: "🔵",
+};
+---
+<a class="paper-card card" href={`/papers/${paper.slug}/`}>
+  <div class="paper-card__top">
+    <span class="paper-card__n">#{String(paper.n).padStart(2, "0")}</span>
+    <span class="tag">{levelIcon[paper.level]} {paper.level}</span>
+  </div>
+  <h3 class="paper-card__title">{paper.title}</h3>
+  <p class="paper-card__meta muted">{paper.category} · {paper.year} · {paper.difficulty}</p>
+  <div class="paper-card__status">
+    <StatusBadge done={paper.status.read} label="read" />
+    <StatusBadge done={paper.status.implemented} label="implemented" />
+    <StatusBadge done={paper.status.experiment} label="experiment" />
+  </div>
+</a>
+
+<style>
+  .paper-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--text);
+  }
+  .paper-card:hover {
+    text-decoration: none;
+    border-color: var(--accent-dim);
+  }
+  .paper-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .paper-card__n {
+    font-family: var(--mono);
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+  .paper-card__title {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-bright);
+  }
+  .paper-card__meta {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+  .paper-card__status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+</style>

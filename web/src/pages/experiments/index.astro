@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import experiments from "../../data/experiments.json";
+---
+<BaseLayout title="Experiments">
+  <section class="section wrap">
+    <h1>Experiments</h1>
+    <p class="muted">
+      Controlled experiments — question → hypothesis → variables → results → analysis.
+      Never "I tried this" notebooks.
+    </p>
+  </section>
+
+  <section class="section wrap">
+    <div class="grid exp-grid">
+      {experiments.map((exp, i) => (
+        <a class="card exp-card" href={`/experiments/${exp.slug}/`}>
+          <span class="tag">{String(i + 1).padStart(3, "0")}</span>
+          <h3>{exp.title}</h3>
+          <p class="muted">{exp.related}</p>
+          <span class="tag status">{exp.status}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .exp-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  .exp-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: var(--text);
+  }
+  .exp-card:hover {
+    text-decoration: none;
+    border-color: var(--accent-dim);
+  }
+  .exp-card h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .status {
+    width: fit-content;
+  }
+</style>

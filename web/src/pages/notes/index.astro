@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import links from "../../data/links.json";
+
+const notes = [
+  "transformers", "attention", "tokenization", "pretraining", "scaling",
+  "post-training", "reasoning", "moe", "inference", "research-methodology",
+];
+---
+<BaseLayout title="Notes">
+  <section class="section wrap">
+    <h1>Notes</h1>
+    <p class="muted">
+      Running technical notes by topic — a small learning wiki, updated as
+      understanding develops. Full text lives in the repo's <code>notes/</code> folder.
+    </p>
+  </section>
+
+  <section class="section wrap">
+    <ul class="notes-list">
+      {notes.map((slug) => (
+        <li>
+          <a href={`${links.github}/blob/master/notes/${slug}.md`} target="_blank" rel="noopener noreferrer">
+            {slug.replace(/-/g, " ")}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a href={`${links.github}/blob/master/notes/x-posts.md`} target="_blank" rel="noopener noreferrer">
+          x posts (templates + log)
+        </a>
+      </li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .notes-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.6rem;
+    font-family: var(--mono);
+  }
+  .notes-list li {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.9rem;
+  }
+  .notes-list a {
+    color: var(--text);
+  }
+  .notes-list a:hover {
+    color: var(--accent);
+  }
+</style>

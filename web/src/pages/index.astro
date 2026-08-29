@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProgressDashboard from "../components/ProgressDashboard.astro";
+import PaperCard from "../components/PaperCard.astro";
+import links from "../data/links.json";
+import roadmap from "../data/roadmap.json";
+import papers from "../data/papers.json";
+
+const firstPaper = papers.find((p) => p.n === 1);
+---
+<BaseLayout title="Home">
+  <section class="hero wrap">
+    <p class="hero__kicker prompt">building-llms-from-first-principles</p>
+    <h1>A growing lab. 26 papers. 26+ implementations.<br />No fixed deadline.</h1>
+    <p class="hero__lede">
+      Learning how modern LLMs are built — in public. I'm a software engineer
+      documenting the process of going from
+      <strong>software engineer → LLM Engineer → aspiring Research Engineer</strong>,
+      one paper, implementation, and experiment at a time.
+    </p>
+    <p class="hero__links">
+      <a href={links.github} target="_blank" rel="noopener noreferrer">GitHub repo →</a>
+      <a href={links.x} target="_blank" rel="noopener noreferrer">Follow on X →</a>
+    </p>
+  </section>
+
+  <section class="section wrap">
+    <h2>Progress dashboard</h2>
+    <p class="muted">Updated as the project progresses. Everything starts at zero — no faked progress.</p>
+    <ProgressDashboard />
+  </section>
+
+  <section class="section wrap">
+    <h2>Roadmap</h2>
+    <p class="muted">6 phases, no fixed deadline. Full detail on the <a href="/roadmap/">roadmap page</a>.</p>
+    <div class="grid phases">
+      {roadmap.map((phase) => (
+        <a class="card phase" href="/roadmap/">
+          <span class="tag">phase {phase.phase}</span>
+          <h3>{phase.title}</h3>
+          <p class="muted">{phase.papers.length} paper{phase.papers.length > 1 ? "s" : ""}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {firstPaper && (
+    <section class="section wrap">
+      <h2>Up next</h2>
+      <p class="muted">First milestone: read, implement, and run a small-scale experiment on Paper #1.</p>
+      <div class="grid" style="grid-template-columns: minmax(0, 360px);">
+        <PaperCard paper={firstPaper} />
+      </div>
+    </section>
+  )}
+
+  <section class="section wrap">
+    <h2>How to read this repo</h2>
+    <p class="muted">Five labels, never used interchangeably:</p>
+    <table>
+      <tbody>
+        <tr><td><strong>Learning</strong></td><td>Understanding an existing, published concept.</td></tr>
+        <tr><td><strong>Implementation</strong></td><td>Building an existing, published idea from scratch.</td></tr>
+        <tr><td><strong>Reproduction</strong></td><td>Attempting to reproduce published findings (usually small-scale).</td></tr>
+        <tr><td><strong>Experiment</strong></td><td>Modifying or testing an idea under controlled conditions.</td></tr>
+        <tr><td><strong>Original Research</strong></td><td>Investigating a question beyond simply following a paper.</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">More in the <a href="/about/">about page</a>.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 4rem 1.5rem 2.5rem;
+  }
+  .hero__kicker {
+    font-family: var(--mono);
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    max-width: 20ch;
+  }
+  .hero__lede {
+    max-width: 62ch;
+    color: var(--text);
+    font-size: 1.05rem;
+  }
+  .hero__links {
+    display: flex;
+    gap: 1.25rem;
+    font-family: var(--mono);
+    margin-top: 1.25rem;
+  }
+  .phases {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .phase {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: var(--text);
+  }
+  .phase:hover {
+    text-decoration: none;
+    border-color: var(--accent-dim);
+  }
+  .phase h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+</style>

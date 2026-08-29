@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import links from "../data/links.json";
+
+const steps = [
+  "Reimplement", "Reproduce", "Modify", "Experiment",
+  "Find something interesting", "Form a hypothesis",
+  "Run controlled experiments", "Publish",
+];
+---
+<BaseLayout title="Research">
+  <section class="section wrap">
+    <h1>Research</h1>
+    <p class="muted">
+      Work that goes beyond simple paper reproduction — genuine investigation,
+      not just re-implementation. Nothing here is labeled "research" unless it
+      goes beyond following an existing paper's method on the paper's own terms.
+    </p>
+  </section>
+
+  <section class="section wrap">
+    <h2>Research progression</h2>
+    <ol class="steps">
+      {steps.map((s) => <li>{s}</li>)}
+    </ol>
+  </section>
+
+  <section class="section wrap">
+    <h2>Projects</h2>
+    <table>
+      <thead>
+        <tr><th>Project</th><th>Status</th><th>Summary</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href={`${links.github}/tree/master/research/experiment-001`} target="_blank" rel="noopener noreferrer">experiment-001</a></td>
+          <td>not started</td>
+          <td class="muted">fill in once started</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</BaseLayout>
+
+<style>
+  .steps {
+    font-family: var(--mono);
+    color: var(--text-dim);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-left: 1.4rem;
+  }
+  .steps li::marker {
+    color: var(--accent);
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+import links from "../data/links.json";
+---
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="muted">
+      Building LLMs From First Principles — a growing, in-public LLM research lab. No fixed deadline.
+    </p>
+    <p class="footer__links">
+      <a href={links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span aria-hidden="true">·</span>
+      <a href={links.x} target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      <span aria-hidden="true">·</span>
+      <a href={`${links.github}/blob/master/LICENSE`} target="_blank" rel="noopener noreferrer">MIT License</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+    padding: 2rem 0 3rem;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+  }
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .footer__links a {
+    color: var(--text-dim);
+  }
+  .footer__links a:hover {
+    color: var(--accent);
+  }
+  .footer__links span {
+    color: var(--border-strong);
+    margin: 0 0.35rem;
+  }
+</style>
