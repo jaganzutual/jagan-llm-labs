@@ -1,4 +1,5 @@
 :root {
+    /* dark (default) */
     --bg: #0a0e14;
     --bg-raised: #10161f;
     --bg-inset: #0d1219;
@@ -7,14 +8,44 @@
     --text: #c9d1d9;
     --text-dim: #8b96a5;
     --text-bright: #eef2f6;
-    --accent: #7ee787;
-    --accent-dim: #4c9a55;
+    --nav-bg: #14170f;
+    --nav-text: #eef2f6;
+    --nav-text-dim: #9aa39a;
+
+    --accent: #cbfa4c;
+    --accent-ink: #14170f;
+    --accent-dim: #7bb52e;
     --accent-amber: #f2cc60;
     --accent-blue: #79c0ff;
+
     --mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --radius: 6px;
+    --radius: 10px;
+    --radius-pill: 999px;
     --max-width: 960px;
+
+    color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+    --bg: #eef0ea;
+    --bg-raised: #f8f9f5;
+    --bg-inset: #e4e6de;
+    --border: #d8dbd0;
+    --border-strong: #c3c6ba;
+    --text: #34372e;
+    --text-dim: #6b6f61;
+    --text-bright: #14170f;
+    --nav-bg: #14170f;
+    --nav-text: #f8f9f5;
+    --nav-text-dim: #a7ab9c;
+
+    --accent: #9fd423;
+    --accent-ink: #14170f;
+    --accent-dim: #6f9418;
+    --accent-blue: #1f6fd6;
+
+    color-scheme: light;
 }
 
 * {
@@ -28,16 +59,11 @@ html {
 body {
     margin: 0;
     background: var(--bg);
-    background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-attachment: fixed;
-    background-position: center top;
     color: var(--text);
     font-family: var(--sans);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 a {
@@ -55,7 +81,14 @@ a:hover {
     padding: 0 1.5rem;
 }
 
-h1,
+h1 {
+    font-family: var(--sans);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-bright);
+    line-height: 1.05;
+}
+
 h2,
 h3,
 h4 {
@@ -115,6 +148,7 @@ th {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.25rem 1.5rem;
+    transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .card:hover {
@@ -126,9 +160,29 @@ th {
     font-family: var(--mono);
     font-size: 0.72rem;
     padding: 0.15rem 0.5rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--border-strong);
     color: var(--text-dim);
+}
+
+.pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.pill-btn:hover {
+    text-decoration: none;
+    filter: brightness(1.08);
 }
 
 .grid {

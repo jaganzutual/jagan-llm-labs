@@ -1,0 +1,55 @@
+---
+---
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light and dark theme">
+  <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
+  <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
+</button>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var root = document.documentElement;
+      var next = root.dataset.theme === "light" ? "dark" : "light";
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem("theme", next);
+      } catch (e) {
+        /* storage unavailable, theme just won't persist */
+      }
+    });
+  })();
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    color: var(--nav-text);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .theme-toggle:hover {
+    border-color: var(--accent);
+  }
+  .theme-toggle__icon {
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+  .theme-toggle__icon--moon {
+    display: none;
+  }
+  :root[data-theme="light"] .theme-toggle__icon--sun {
+    display: none;
+  }
+  :root[data-theme="light"] .theme-toggle__icon--moon {
+    display: inline;
+  }
+</style>

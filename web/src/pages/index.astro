@@ -11,13 +11,16 @@ const firstPaper = papers.find((p) => p.n === 1);
 ---
 <BaseLayout title="Home">
   <section class="hero wrap">
-    <p class="hero__kicker prompt">building-llms-from-first-principles</p>
-    <h1>A growing lab. 26 papers. 26+ implementations.<br />No fixed deadline.</h1>
+    <p class="hero__kicker prompt">whoami</p>
+    <h1>Hi, I'm Jagan.</h1>
     <p class="hero__lede">
-      Learning how modern LLMs are built — in public. I'm a software engineer
-      documenting the process of going from
-      <strong>software engineer → LLM Engineer → aspiring Research Engineer</strong>,
-      one paper, implementation, and experiment at a time.
+      Software engineer, learning how LLMs actually work — the math, the
+      architectures, the training runs — well enough to work alongside
+      researchers at frontier labs someday.
+    </p>
+    <p class="hero__lede">
+      No fixed deadline. Just papers, code, and honest results, documented in
+      public as I go.
     </p>
     <p class="hero__links">
       <a href={links.github} target="_blank" rel="noopener noreferrer">GitHub repo →</a>
@@ -83,12 +86,15 @@ const firstPaper = papers.find((p) => p.n === 1);
   }
   .hero h1 {
     font-size: clamp(1.6rem, 4vw, 2.4rem);
-    max-width: 20ch;
   }
   .hero__lede {
     max-width: 62ch;
     color: var(--text);
     font-size: 1.05rem;
+    margin: 0 0 1rem;
+  }
+  .hero__lede:last-of-type {
+    margin-bottom: 0;
   }
   .hero__links {
     display: flex;
