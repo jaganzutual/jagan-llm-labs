@@ -17,7 +17,7 @@ const paperById = new Map(papers.map((p) => [p.n, p]));
   </section>
 
   {roadmap.map((phase) => (
-    <section class="section wrap">
+    <section class="section wrap roadmap-phase">
       <div class="phase-head">
         <span class="tag">phase {phase.phase}</span>
         <span class="tag">{phase.status}</span>
@@ -55,11 +55,39 @@ const paperById = new Map(papers.map((p) => [p.n, p]));
     gap: 0.5rem;
     margin-bottom: 0.5rem;
   }
+  .roadmap-phase {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: border-color 0.15s ease;
+  }
+  .roadmap-phase:hover {
+    border-color: var(--border-strong);
+  }
+  .roadmap-phase h2 {
+    margin-top: 0;
+    color: var(--text-bright);
+  }
+  .roadmap-phase h3 {
+    color: var(--accent);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .roadmap-phase li {
+    margin: 0.25rem 0;
+  }
   ul.plain {
     list-style: none;
     padding: 0;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+  }
+  @media (max-width: 600px) {
+    .roadmap-phase {
+      padding: 1.15rem;
+    }
   }
 </style>
