@@ -26,6 +26,7 @@ const levelIcon: Record<string, string> = {
 };
 ---
 <a class="paper-card card" href={withBase(`/papers/${paper.slug}/`)}>
+  <span class="paper-card__ghost" aria-hidden="true">{String(paper.n).padStart(2, "0")}</span>
   <div class="paper-card__top">
     <span class="paper-card__n">#{String(paper.n).padStart(2, "0")}</span>
     <span class="tag">{levelIcon[paper.level]} {paper.level}</span>
@@ -45,10 +46,14 @@ const levelIcon: Record<string, string> = {
     flex-direction: column;
     gap: 0.5rem;
     color: var(--text);
+    overflow: hidden;
   }
   .paper-card:hover {
     text-decoration: none;
-    border-color: var(--accent-dim);
+  }
+  .paper-card:hover .paper-card__ghost {
+    -webkit-text-stroke-color: var(--accent-dim);
+    opacity: 0.9;
   }
   .paper-card__top {
     display: flex;
@@ -57,19 +62,36 @@ const levelIcon: Record<string, string> = {
   }
   .paper-card__n {
     font-family: var(--mono);
-    color: var(--text-dim);
+    color: var(--accent);
     font-size: 0.8rem;
   }
+  .paper-card__ghost {
+    position: absolute;
+    right: 0.5rem;
+    bottom: -1.4rem;
+    font-family: var(--mono);
+    font-size: 4.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--border-strong);
+    opacity: 0.45;
+    transition: -webkit-text-stroke-color 0.2s ease, opacity 0.2s ease;
+    pointer-events: none;
+  }
   .paper-card__title {
+    position: relative;
     margin: 0;
     font-size: 1rem;
     color: var(--text-bright);
   }
   .paper-card__meta {
+    position: relative;
     margin: 0;
     font-size: 0.82rem;
   }
   .paper-card__status {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
