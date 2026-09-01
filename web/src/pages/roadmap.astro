@@ -1,93 +1,273 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Meter from "../components/Meter.astro";
 import { withBase } from "../utils/url";
 import roadmap from "../data/roadmap.json";
 import papers from "../data/papers.json";
 
 const paperById = new Map(papers.map((p) => [p.n, p]));
+
+function statusClass(status: string) {
+  if (status === "done") return "is-done";
+  if (status === "in-progress") return "is-active";
+  return "is-idle";
+}
 ---
 <BaseLayout title="Roadmap">
   <section class="section wrap">
-    <h1>Roadmap</h1>
-    <p class="muted">
-      6 phases, no fixed deadline. Each phase pairs a set of papers with concrete
-      implementation and experiment goals — adjusted as the lab learns, structure
-      and honesty requirements stay the same.
+    <p class="crumb prompt fade-up" style="--d: 0s">cat roadmap.md --phases 6</p>
+    <h1 class="fade-up" style="--d: 0.06s">Roadmap</h1>
+    <p class="muted lede fade-up" style="--d: 0.12s">
+      6 phases, no fixed deadline. Each phase pairs papers with concrete
+      implementation and experiment goals — adjusted as the lab learns,
+      structure and honesty requirements stay the same.
     </p>
   </section>
 
-  {roadmap.map((phase) => (
-    <section class="section wrap roadmap-phase">
-      <div class="phase-head">
-        <span class="tag">phase {phase.phase}</span>
-        <span class="tag">{phase.status}</span>
-      </div>
-      <h2>{phase.title}</h2>
+  <section class="section wrap">
+    <div class="timeline">
+      {roadmap.map((phase, i) => {
+        const phasePapers = phase.papers.map((n) => paperById.get(n)).filter(Boolean);
+        const readCount = phasePapers.filter((p) => p!.status.read).length;
+        return (
+          <article class="tl-item fade-up" style={`--d: ${Math.min(0.15 + i * 0.08, 0.7)}s`}>
+            <span class:list={["tl-node", statusClass(phase.status)]} aria-hidden="true"></span>
+            <div class="card tl-card">
+              <span class="tl-ghost" aria-hidden="true">{String(phase.phase).padStart(2, "0")}</span>
+              <div class="tl-head">
+                <span class="tag tag--accent">phase {phase.phase}</span>
+                <span class:list={["tag", statusClass(phase.status)]}>{phase.status}</span>
+                <Meter label="papers read" value={readCount} total={phase.papers.length} />
+              </div>
+              <h2>{phase.title}</h2>
 
-      <h3>Papers</h3>
-      <ul class="plain">
-        {phase.papers.map((n) => {
-          const p = paperById.get(n);
-          return p ? (
-            <li>
-              <a href={withBase(`/papers/${p.slug}/`)}>#{n} — {p.title}</a>
-            </li>
-          ) : null;
-        })}
-      </ul>
+              <div class="tl-cols">
+                <div>
+                  <h3>papers</h3>
+                  <div class="chips">
+                    {phase.papers.map((n) => {
+                      const p = paperById.get(n);
+                      return p ? (
+                        <a class="chip" class:list={{ done: p.status.read }} href={withBase(`/papers/${p.slug}/`)}>
+                          <span class="chip__n">#{String(n).padStart(2, "0")}</span> {p.title}
+                        </a>
+                      ) : null;
+                    })}
+                  </div>
 
-      <h3>Goals</h3>
-      <ul>
-        {phase.goals.map((g) => <li>{g}</li>)}
-      </ul>
-
-      <h3>Build</h3>
-      <ul>
-        {phase.build.map((b) => <li>{b}</li>)}
-      </ul>
-    </section>
-  ))}
+                  <h3>build</h3>
+                  <ul class="ticks">
+                    {phase.build.map((b) => <li>{b}</li>)}
+                  </ul>
+                </div>
+                <div>
+                  <h3>goals</h3>
+                  <ul class="ticks">
+                    {phase.goals.map((g) => <li>{g}</li>)}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-  .phase-head {
+  .crumb {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin: 0 0 0.9rem;
+  }
+  .lede {
+    max-width: 68ch;
+  }
+
+  /* timeline rail */
+  .timeline {
+    position: relative;
+    padding-left: 2.4rem;
     display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--border) 55%, transparent);
+  }
+  .tl-item {
+    position: relative;
+  }
+  .tl-node {
+    position: absolute;
+    left: -2.4rem;
+    top: 1.4rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--border-strong);
+    z-index: 1;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .tl-item:hover .tl-node {
+    border-color: var(--accent);
+    box-shadow: 0 0 14px var(--glow-strong);
+  }
+  .tl-node.is-done {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 14px var(--glow-strong);
+  }
+  .tl-node.is-active {
+    border-color: var(--accent-amber);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--accent-amber) 40%, transparent);
+  }
+
+  /* phase card */
+  .tl-card {
+    overflow: hidden;
+    padding: 1.6rem 1.8rem;
+  }
+  .tl-ghost {
+    position: absolute;
+    right: 0.6rem;
+    top: -1.2rem;
+    font-family: var(--mono);
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--border-strong);
+    opacity: 0.4;
+    pointer-events: none;
+    transition: -webkit-text-stroke-color 0.2s ease, opacity 0.2s ease;
+  }
+  .tl-card:hover .tl-ghost {
+    -webkit-text-stroke-color: var(--accent-dim);
+    opacity: 0.85;
+  }
+  .tl-head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    position: relative;
   }
-  .roadmap-phase {
-    margin-bottom: 1rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    transition: border-color 0.15s ease;
-  }
-  .roadmap-phase:hover {
-    border-color: var(--border-strong);
-  }
-  .roadmap-phase h2 {
-    margin-top: 0;
-    color: var(--text-bright);
-  }
-  .roadmap-phase h3 {
+  .tl-head .tag.is-done {
     color: var(--accent);
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
+    border-color: var(--accent-dim);
+    background: var(--glow);
+  }
+  .tl-head .tag.is-active {
+    color: var(--accent-amber);
+    border-color: color-mix(in srgb, var(--accent-amber) 45%, transparent);
+  }
+  .tl-card h2 {
+    position: relative;
+    margin: 0.8rem 0 1.1rem;
+    font-size: 1.35rem;
+  }
+
+  /* columns + lists */
+  .tl-cols {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.6rem;
+  }
+  h3 {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: var(--accent);
+    margin: 1.1rem 0 0.55rem;
   }
-  .roadmap-phase li {
-    margin: 0.25rem 0;
+  .tl-cols h3:first-child {
+    margin-top: 0;
   }
-  ul.plain {
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    padding: 0.28rem 0.7rem;
+    transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .chip:hover {
+    text-decoration: none;
+    border-color: var(--accent-dim);
+    color: var(--accent);
+    box-shadow: 0 0 14px -4px var(--glow-strong);
+    transform: translateY(-1px);
+  }
+  .chip.done {
+    border-color: var(--accent-dim);
+    color: var(--accent);
+  }
+  .chip__n {
+    color: var(--text-dim);
+  }
+  .chip:hover .chip__n,
+  .chip.done .chip__n {
+    color: inherit;
+  }
+  .ticks {
     list-style: none;
+    margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.35rem;
+    font-size: 0.88rem;
   }
-  @media (max-width: 600px) {
-    .roadmap-phase {
-      padding: 1.15rem;
+  .ticks li {
+    position: relative;
+    padding-left: 1.1rem;
+    color: var(--text);
+  }
+  .ticks li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 760px) {
+    .tl-cols {
+      grid-template-columns: 1fr;
+    }
+    .tl-card {
+      padding: 1.3rem 1.3rem;
+    }
+    .tl-ghost {
+      font-size: 3.6rem;
+      top: -0.8rem;
+    }
+    .timeline {
+      padding-left: 1.9rem;
+    }
+    .tl-node {
+      left: -1.9rem;
     }
   }
 </style>

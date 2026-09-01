@@ -2,15 +2,52 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProgressDashboard from "../components/ProgressDashboard.astro";
 import links from "../data/links.json";
+import progress from "../data/progress.json";
+
+const totalUnits =
+  progress.papersTotal + progress.implementationsTotal + progress.experimentsTotal + progress.researchTotal;
+const loggedUnits =
+  progress.papersRead + progress.implementations + progress.experiments + progress.researchProjects;
+const pct = totalUnits ? Math.round((loggedUnits / totalUnits) * 100) : 0;
 ---
 <BaseLayout title="Progress">
   <section class="section wrap">
-    <h1>Progress</h1>
-    <p class="muted">
+    <p class="crumb prompt fade-up" style="--d: 0s">./report --status --honest</p>
+    <h1 class="fade-up" style="--d: 0.06s">Progress</h1>
+    <p class="muted lede fade-up" style="--d: 0.12s">
       Weekly and monthly logs, kept honest — sections start empty and are
       filled in manually as weeks/months actually happen. No fabricated
       collaborations, people, or milestones.
     </p>
+  </section>
+
+  <section class="section wrap">
+    <div class="overview card fade-up" style="--d: 0.18s">
+      <div class="overview__ringwrap">
+        <div
+          class="ring"
+          role="img"
+          aria-label={`Overall progress: ${pct} percent, ${loggedUnits} of ${totalUnits} units logged`}
+          style={`--pct: ${pct}`}
+        >
+          <span class="ring__pct">{pct}%</span>
+        </div>
+        <p class="ring__caption muted">overall completion</p>
+      </div>
+      <div class="overview__body">
+        <p class="overview__headline">
+          <span class="grad-text">{loggedUnits} / {totalUnits}</span> lab units logged
+        </p>
+        <p class="muted">
+          Every paper read, implementation shipped, experiment run, and research
+          project advanced counts as one unit. The ring fills as real work
+          lands in the repo — never before.
+        </p>
+        <a class="pill-btn" href={`${links.github}/tree/master/progress`} target="_blank" rel="noopener noreferrer">
+          Browse the raw logs →
+        </a>
+      </div>
+    </div>
     <ProgressDashboard />
   </section>
 
@@ -21,6 +58,110 @@ import links from "../data/links.json";
       (<a href={`${links.github}/tree/master/progress`} target="_blank" rel="noopener noreferrer">browse on GitHub →</a>).
       This page will list entries as they're filled in.
     </p>
-    <p class="muted">No entries yet.</p>
+    <p class="empty prompt">ls progress/ --entries</p>
+    <p class="empty-out muted">no entries yet — the log starts with the first week of real work</p>
   </section>
 </BaseLayout>
+
+<style>
+  .crumb {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin: 0 0 0.9rem;
+  }
+  .lede {
+    max-width: 68ch;
+  }
+
+  .overview {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+    margin-bottom: 1.2rem;
+    padding: 1.8rem 2rem;
+  }
+  .overview__ringwrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+  .ring {
+    position: relative;
+    width: 148px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: conic-gradient(
+      from -90deg,
+      var(--accent) calc(var(--pct) * 1%),
+      var(--bg-inset) 0
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent 66%, #000 67%);
+    mask: radial-gradient(farthest-side, transparent 66%, #000 67%);
+    filter: drop-shadow(0 0 14px var(--glow-strong));
+  }
+  .ring__pct {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: var(--mono);
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--text-bright);
+    -webkit-mask: none;
+    mask: none;
+    filter: none;
+  }
+  .ring__caption {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0;
+  }
+  .overview__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+  .overview__headline {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .overview__body p {
+    margin: 0;
+    max-width: 52ch;
+  }
+  .overview__body .pill-btn {
+    margin-top: 0.4rem;
+  }
+
+  .empty {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    margin: 1.2rem 0 0.2rem;
+  }
+  .empty-out {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .overview {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.4rem;
+      padding: 1.6rem 1.2rem;
+    }
+    .overview__body {
+      align-items: center;
+    }
+  }
+</style>

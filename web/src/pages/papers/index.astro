@@ -1,26 +1,82 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PaperCard from "../../components/PaperCard.astro";
+import Meter from "../../components/Meter.astro";
 import papers from "../../data/papers.json";
+
+const read = papers.filter((p) => p.status.read).length;
+const implemented = papers.filter((p) => p.status.implemented).length;
+const experimented = papers.filter((p) => p.status.experiment).length;
+const touched = papers.filter(
+  (p) => p.status.read || p.status.implemented || p.status.experiment
+).length;
 ---
 <BaseLayout title="Papers">
   <section class="section wrap">
-    <h1>Papers</h1>
-    <p class="muted">
-      {papers.length} papers tracked. 🟢 IMPLEMENT — built from scratch ·
-      🟡 EXPERIMENT — reproduced at small scale · 🔵 STUDY — understood without full reproduction.
+    <p class="crumb prompt fade-up" style="--d: 0s">ls papers/ --tracked</p>
+    <h1 class="fade-up" style="--d: 0.06s">Papers</h1>
+    <p class="muted lede fade-up" style="--d: 0.12s">
+      {papers.length} papers on the syllabus, tracked honestly — each one gets
+      read, built, or stress-tested before it counts.
     </p>
+    <div class="stat-row fade-up" style="--d: 0.18s">
+      <Meter label="read" value={read} total={papers.length} />
+      <Meter label="implemented" value={implemented} total={papers.length} />
+      <Meter label="experimented" value={experimented} total={papers.length} />
+      <Meter label="touched" value={touched} total={papers.length} />
+    </div>
+    <div class="legend fade-up" style="--d: 0.24s">
+      <span class="tag tag--accent">🟢 IMPLEMENT — built from scratch</span>
+      <span class="tag tag--amber">🟡 EXPERIMENT — reproduced at small scale</span>
+      <span class="tag tag--blue">🔵 STUDY — understood without full reproduction</span>
+    </div>
   </section>
 
   <section class="section wrap">
     <div class="grid papers-grid">
-      {papers.map((paper) => <PaperCard paper={paper} />)}
+      {papers.map((paper, i) => (
+        <div class="fade-up" style={`--d: ${Math.min(0.3 + i * 0.03, 0.9)}s`}>
+          <PaperCard paper={paper} />
+        </div>
+      ))}
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  .crumb {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin: 0 0 0.9rem;
+  }
+  .lede {
+    max-width: 62ch;
+  }
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.4rem;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .tag--amber {
+    color: var(--accent-amber);
+    border-color: color-mix(in srgb, var(--accent-amber) 45%, transparent);
+  }
+  .tag--blue {
+    color: var(--accent-blue);
+    border-color: color-mix(in srgb, var(--accent-blue) 45%, transparent);
+  }
   .papers-grid {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  .papers-grid > div {
+    min-width: 0;
   }
 </style>
