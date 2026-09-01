@@ -1,5 +1,7 @@
 # Building LLMs From First Principles
 
+**This lab is hosted live here: [jaganzutual.github.io/jagan-llm-labs](https://jaganzutual.github.io/jagan-llm-labs/)**
+
 **A growing lab. 26 papers. 26+ implementations. No fixed deadline.**
 **One goal: become an LLM Engineer.**
 
