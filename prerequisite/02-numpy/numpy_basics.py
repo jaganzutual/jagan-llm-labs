@@ -137,7 +137,7 @@ print("Task 5 passed")
 # Write matmul_demo(A, B): A is (2, 3), B is (3, 4). Return a dict with:
 #   "at_b"  : A @ B              -> shape (2, 4)
 #   "dot"   : np.dot(A, B)       -> same shape, equivalent for 2-D
-#   "BT"    : A @ B.T            -> shape (2, 3)
+#   "BT"    : B.T                -> shape (4, 3)
 #
 # Key fact: (a, b) @ (b, c) -> (a, c). Inner dims must match.
 # This is the single most important shape rule in all of ML.
@@ -152,7 +152,7 @@ B = np.random.randn(3, 4)
 out = matmul_demo(A, B)
 assert out["at_b"].shape == (2, 4)
 assert out["dot"].shape == (2, 4)
-assert out["BT"].shape == (2, 3)
+assert out["BT"].shape == (4, 3)
 print("Task 6 passed")
 
 
